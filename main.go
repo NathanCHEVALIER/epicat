@@ -1,5 +1,11 @@
 package main
 
+import (
+    "net/http"
+
+    "github.com/gin-gonic/gin"
+)
+
 // picture represents data about an epicat picture.
 type picture struct {
     ID     string  `json:"id"`
