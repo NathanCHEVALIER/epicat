@@ -11,7 +11,7 @@ type picture struct {
     ID     string  `json:"id"`
     Title  string  `json:"title"`
     Cat string  `json:"cat"`
-    Url  float64 `json:"url"`
+    Url  string `json:"url"`
 }
 
 // pictures slice to seed data.
