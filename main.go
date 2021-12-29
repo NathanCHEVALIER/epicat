@@ -14,3 +14,8 @@ var pictures = []picture{
     {ID: "2", Title: "", Cat: "Hoppy", Url: ""},
     {ID: "3", Title: "", Cat: "Hoppy", Url: ""},
 }
+
+// getPictures responds with the list of all pictures as JSON.
+func getPictures(c *gin.Context) {
+    c.IndentedJSON(http.StatusOK, pictures)
+}
