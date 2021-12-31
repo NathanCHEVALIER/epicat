@@ -23,7 +23,8 @@ var pictures = []picture{
 
 func main() {
     router := gin.Default()
-    router.GET("/pictures", getPictures)
+	router.GET("/pictures", getPictures)
+    router.GET("/pictures/:id", getPictureByID)
 
     router.Run("localhost:8080")
 }
