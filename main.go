@@ -32,3 +32,18 @@ func main() {
 func getPictures(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, pictures)
 }
+
+// getPictureByID locates the picture whose ID value matches the id
+// parameter sent by the client, then returns that picture as a response.
+func getPictureByID(c *gin.Context) {
+    id := c.Param("id")
+
+    // Loop over the list of pictures
+    for _, a := range pictures {
+        if a.ID == id {
+            c.IndentedJSON(http.StatusOK, a)
+            return
+        }
+    }
+    c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Picture not found"})
+}
