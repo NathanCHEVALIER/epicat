@@ -31,8 +31,13 @@ func main() {
 	router.Run("localhost:8080")
 }
 
-// getPictures responds with the list of all pictures as JSON.
+// getPictures responds with the list of all pictures
 func getPictures(c *gin.Context) {
+	if len(pictures) == 0 {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "No Picture"})
+		return
+	}
+
 	c.IndentedJSON(http.StatusOK, pictures)
 }
 
@@ -51,13 +56,12 @@ func getPictureByID(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Picture not found"})
 }
 
-// getPictureByID locates the picture whose ID value matches the id
-// parameter sent by the client, then returns that picture as a response.
+// getRdmPicture pick a random picture in pictures
 func getRdmPicture(c *gin.Context) {
 	sz := len(pictures)
 
 	if sz == 0 {
-		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "Picture not found"})
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": "No Picture"})
 		return
 	}
 
